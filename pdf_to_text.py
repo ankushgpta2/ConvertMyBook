@@ -3,6 +3,7 @@ import re
 from typing import Dict, List, Tuple
 import spacy
 from dataclasses import dataclass
+import json
 
 
 @dataclass
@@ -63,7 +64,6 @@ class PDFProcessor:
     def save_formatted_text(self, elements: List[TextElement], output_path: str):
         """ Save formatted text with metadata in a structured format.
         """
-        import json
         
         formatted_data = [
             {
@@ -86,7 +86,6 @@ class PDFProcessor:
     def load_formatted_text(self, input_path: str) -> List[TextElement]:
         """ Load formatted text from saved file.
         """
-        import json
         
         with open(input_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
