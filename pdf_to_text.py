@@ -82,3 +82,19 @@ class PDFProcessor:
         
         with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(formatted_data, f, indent=2)
+    
+    def load_formatted_text(self, input_path: str) -> List[TextElement]:
+        """ Load formatted text from saved file.
+        """
+        import json
+        
+        with open(input_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+            
+        return [
+            TextElement(
+                content=item["content"],
+                **item["formatting"]
+            )
+            for item in data
+        ]
