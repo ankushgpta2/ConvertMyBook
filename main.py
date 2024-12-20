@@ -1,5 +1,5 @@
 import argparse
-from pdf_processor import PDFProcessor
+from bin.pdf_to_text import PDFProcessor
 import os
 
 
