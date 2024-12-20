@@ -59,3 +59,26 @@ class PDFProcessor:
                             formatted_text.append(element)
         
         return formatted_text
+
+    def save_formatted_text(self, elements: List[TextElement], output_path: str):
+        """ Save formatted text with metadata in a structured format.
+        """
+        import json
+        
+        formatted_data = [
+            {
+                "content": elem.content,
+                "formatting": {
+                    "is_heading": elem.is_heading,
+                    "is_quote": elem.is_quote,
+                    "is_italic": elem.is_italic,
+                    "is_capitalized": elem.is_capitalized,
+                    "font_size": elem.font_size,
+                    "font_name": elem.font_name
+                }
+            }
+            for elem in elements
+        ]
+        
+        with open(output_path, 'w', encoding='utf-8') as f:
+            json.dump(formatted_data, f, indent=2)
