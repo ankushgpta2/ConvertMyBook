@@ -73,3 +73,17 @@ class AudioProcessor:
             conditioning_latents["energy"] = 1.1
             
         return conditioning_latents
+    
+    def _save_audio_book(self, segments: List[AudioSegment], output_path: str):
+        """ Combine audio segments and save as a single file.
+        """
+        # Add small pauses between segments
+        pause = np.zeros(int(24000 * 0.5))  # 0.5 second pause
+        
+        # Combine all audio with pauses
+        combined_audio = []
+        for segment in segments:
+            combined_audio.extend(segment.audio)
+            combined_audio.extend(pause)
+            
+        sf.write(output_path, combined_audio, 24000)
