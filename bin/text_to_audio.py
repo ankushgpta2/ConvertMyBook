@@ -54,3 +54,22 @@ class AudioProcessor:
             self._save_audio_book(audio_segments, output_path)
             
         return audio_segments
+    
+    def _adjust_voice_for_formatting(self, element: TextElement, conditioning_latents):
+        """ Adjust voice characteristics based on text formatting.
+        """
+        # These are placeholder adjustments - would need to be tuned
+        if element.is_heading:
+            # Make headings slightly slower and more emphatic
+            conditioning_latents["speed"] = 0.9
+            conditioning_latents["energy"] = 1.2
+            
+        if element.is_quote:
+            # Slightly different voice for quotes
+            conditioning_latents["voice_variation"] = 0.1
+            
+        if element.is_italic:
+            # Add emphasis to italic text
+            conditioning_latents["energy"] = 1.1
+            
+        return conditioning_latents
