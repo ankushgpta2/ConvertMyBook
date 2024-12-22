@@ -1,5 +1,6 @@
 import argparse
 from bin.pdf_to_text import PDFProcessor
+from audio_processor import AudioProcessor
 import os
 
 
@@ -23,6 +24,18 @@ def main():
         output_path = os.path.join(args.output_dir, 'formatted_text.json')
         processor.save_formatted_text(elements, output_path)
         print(f"Formatted text saved to {output_path}")
+    
+    elif args.mode == 'text2audio':
+        # Convert formatted text to audio
+        processor = PDFProcessor()
+        audio_processor = AudioProcessor()
+        
+        input_path = os.path.join(args.output_dir, 'formatted_text.json')
+        elements = processor.load_formatted_text(input_path)
+        
+        output_path = os.path.join(args.output_dir, 'audiobook.wav')
+        audio_processor.text_to_speech(elements, output_path=output_path)
+        print(f"Audiobook saved to {output_path}")
 
 
 if __name__ == "__main__":
