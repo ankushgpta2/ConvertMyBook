@@ -16,6 +16,14 @@ def main():
     # Create output directory if it doesn't exist
     os.makedirs(args.output_dir, exist_ok=True)
 
+    if args.mode == 'pdf2text':
+        # Process PDF and save formatted text
+        processor = PDFProcessor()
+        elements = processor.extract_text_with_formatting(args.pdf_path)
+        output_path = os.path.join(args.output_dir, 'formatted_text.json')
+        processor.save_formatted_text(elements, output_path)
+        print(f"Formatted text saved to {output_path}")
+
 
 if __name__ == "__main__":
     main()
