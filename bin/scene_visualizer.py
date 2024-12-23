@@ -62,29 +62,34 @@ class ChatbotInterface:
         self.context.append({"role": "user", "content": user_input})
 
         # Generate response using GPT
-        response = openai.ChatCompletion.create(
-            model="gpt-4",
-            messages=[
-                {"role": "system", "content": "You are a helpful assistant for discussing and visualizing scenes from books. You can help find relevant passages and generate scene descriptions."},
-                *self.context
-            ]
-        )
-        
-        assistant_response = response.choices[0].message['content']
-        self.context.append({"role": "assistant", "content": assistant_response})
-        
-        # Check if user wants to visualize something
-        if any(keyword in user_input.lower() for keyword in ["show", "visualize", "picture", "image"]):
-            # Extract character or scene information
-            character_match = re.search(r"show\s+(\w+)", user_input.lower())
-            if character_match:
-                character_name = character_match.group(1)
-                scene_description = self.scene_visualizer.extract_scene_description(
-                    elements, 
-                    character_name=character_name
-                )
-                image_url = self.scene_visualizer.generate_scene_image(scene_description)
-                if image_url:
-                    assistant_response += f"\n\nI've generated an image of the scene: {image_url}"
-                    
-        return assistant_response
+        try:
+            response = openai.ChatCompletion.create(
+                model="gpt-4",
+                messages=[
+                    {"role": "system", "content": "You are a helpful assistant for discussing and visualizing scenes from books. You can help find relevant passages and generate scene descriptions."},
+                    *self.context
+                ]
+            )
+            
+            assistant_response = response.choices[0].message['content']
+            self.context.append({"role": "assistant", "content": assistant_response})
+            
+            # Check if user wants to visualize something
+            if any(keyword in user_input.lower() for keyword in ["show", "visualize", "picture", "image"]):
+                # Extract character or scene information
+                character_match = re.search(r"show\s+(\w+)", user_input.lower())
+                if character_match:
+                    character_name = character_match.group(1)
+                    scene_description = self.scene_visualizer.extract_scene_description(
+                        elements, 
+                        character_name=character_name
+                    )
+                    image_url = self.scene_visualizer.generate_scene_image(scene_description)
+                    if image_url:
+                        assistant_response += f"\n\nI've generated an image of the scene: {image_url}"
+                        
+            return assistant_response
+            
+        except Exception as e:
+            print(f"Error in chat completion: {e}")
+            return "I apologize, but I encountered an error processing your request."
