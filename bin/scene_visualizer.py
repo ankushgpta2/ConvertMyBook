@@ -32,6 +32,21 @@ class SceneVisualizer:
                     relevant_text.append(elem.content)
                     
         return " ".join(relevant_text)
+    
+    def generate_scene_image(self, scene_description: str, style: str = "realistic"
+    ) -> str:
+        """ Generate an image of the scene using DALL-E.
+        """
+        try:
+            response = openai.Image.create(
+                prompt=f"A {style} visualization of the following scene: {scene_description}",
+                n=1,
+                size="1024x1024"
+            )
+            return response['data'][0]['url']
+        except Exception as e:
+            print(f"Error generating image: {e}")
+            return None
 
 class ChatbotInterface:
     def __init__(self, api_key: str):
