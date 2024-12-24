@@ -37,6 +37,23 @@ def main():
         output_path = os.path.join(args.output_dir, 'audiobook.wav')
         audio_processor.text_to_speech(elements, output_path=output_path)
         print(f"Audiobook saved to {output_path}")
+    
+    elif args.mode == 'chat':
+        # Start chat interface
+        processor = PDFProcessor()
+        input_path = os.path.join(args.output_dir, 'formatted_text.json')
+        elements = processor.load_formatted_text(input_path)
+        
+        chatbot = ChatbotInterface(args.openai_key)
+        print("Chat interface started. Type 'quit' to exit.")
+        
+        while True:
+            user_input = input("You: ")
+            if user_input.lower() == 'quit':
+                break
+                
+            response = chatbot.chat(user_input, elements)
+            print(f"Assistant: {response}")
 
 
 if __name__ == "__main__":
