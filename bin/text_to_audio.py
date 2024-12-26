@@ -12,6 +12,7 @@ class AudioSegment:
     sample_rate: int
     text_element: TextElement
 
+
 class AudioProcessor:
     def __init__(self):
         self.tts = TextToSpeech()

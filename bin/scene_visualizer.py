@@ -3,6 +3,7 @@ import openai
 from pdf_processor import TextElement
 import re
 
+
 class SceneVisualizer:
     def __init__(self, api_key: str):
         self.api_key = api_key
@@ -48,6 +49,7 @@ class SceneVisualizer:
             print(f"Error generating image: {e}")
             return None
 
+
 class ChatbotInterface:
     def __init__(self, api_key: str):
         self.api_key = api_key
@@ -89,7 +91,7 @@ class ChatbotInterface:
                         assistant_response += f"\n\nI've generated an image of the scene: {image_url}"
                         
             return assistant_response
-            
+
         except Exception as e:
             print(f"Error in chat completion: {e}")
             return "I apologize, but I encountered an error processing your request."
