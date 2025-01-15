@@ -43,3 +43,20 @@ Clone the repository + install dependencies:
 pip install -r requirements.txt
 python -m spacy download en_core_web_sm
 ```
+
+## Usage
+
+### PDF Text Extraction
+```bash
+python main.py --pdf_path book.pdf --output_dir output --mode pdf2text
+```
+
+### Audiobook Generation
+```bash
+python main.py --output_dir output --mode text2audio
+```
+
+### Chat Interface
+```bash
+python main.py --output_dir output --mode chat --openai_key YOUR_API_KEY
+```
