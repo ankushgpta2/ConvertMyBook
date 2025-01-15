@@ -23,6 +23,13 @@ This project is a comprehensive system for processing PDFs, generating audio con
 - Provides interactive chatbot interface
 - Generates images based on textual descriptions
 
+### 4. Main Application (main.py)
+
+- Central application entry point
+- Supports multiple operational modes
+- Handles command-line arguments
+- Offers interactive chat functionality
+
 ## Prerequisites
 
 - Python 3.8+
