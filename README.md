@@ -34,3 +34,12 @@ This project is a comprehensive system for processing PDFs, generating audio con
 
 - Python 3.8+
 - OpenAI API Key (for DALL-E integration)
+
+## Installation
+
+Clone the repository + install dependencies:
+
+```bash
+pip install -r requirements.txt
+python -m spacy download en_core_web_sm
+```
