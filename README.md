@@ -22,3 +22,8 @@ This project is a comprehensive system for processing PDFs, generating audio con
 - Implements scene visualization using DALL-E
 - Provides interactive chatbot interface
 - Generates images based on textual descriptions
+
+## Prerequisites
+
+- Python 3.8+
+- OpenAI API Key (for DALL-E integration)
