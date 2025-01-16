@@ -3,7 +3,7 @@
 ## Overview
 This project is a comprehensive system for processing PDFs, generating audio content, and creating scene visualizations. It provides end-to-end functionality from text extraction to audio generation and scene visualization.
 
-### Key Features
+### Key Features:
 
 - Preserves complex text formatting
 - Supports chapter-specific audio processing
@@ -54,17 +54,17 @@ python -m spacy download en_core_web_sm
 
 ## Usage
 
-### PDF Text Extraction
+### PDF Text Extraction:
 ```bash
 python main.py --pdf_path book.pdf --output_dir output --mode pdf2text
 ```
 
-### Audiobook Generation
+### Audiobook Generation:
 ```bash
 python main.py --output_dir output --mode text2audio
 ```
 
-### Chat Interface
+### Chat Interface:
 ```bash
 python main.py --output_dir output --mode chat --openai_key YOUR_API_KEY
 ```
