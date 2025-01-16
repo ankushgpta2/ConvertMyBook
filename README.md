@@ -3,6 +3,14 @@
 ## Overview
 This project is a comprehensive system for processing PDFs, generating audio content, and creating scene visualizations. It provides end-to-end functionality from text extraction to audio generation and scene visualization.
 
+### Key Features
+
+- Preserves complex text formatting
+- Supports chapter-specific audio processing
+- Detects and handles quotes with unique voice characteristics
+- Maintains text structure in intermediate JSON format
+- Interactive chatbot for scene visualization (DALL-E)
+
 ## Components
 ### 1. PDF Processor (pdf_processor.py)
 
