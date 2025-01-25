@@ -1,7 +1,7 @@
 import argparse
-from bin.pdf_to_text import PDFProcessor
-from bin.text_to_audio import AudioProcessor
-from bin.scene_visualizer import ChatbotInterface
+from src.pdf_to_text import PDFProcessor
+from src.text_to_audio import AudioProcessor
+from src.scene_visualizer import ChatbotInterface
 import os
 
 
